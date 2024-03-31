@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('posts.input');
 });
+
+Route::get('/a', function () {
+    return view('posts.input_api');
+});
+
+Route::post('/posts', [PostController::class, 'tomail']); 
+
+Route::get('/view', [PostController::class, 'view']); 
+
+//Route::post('/b', [PostController::class, 'input']); //httpbin
+Route::post('/b', [PostController::class, 'input2']); //API
